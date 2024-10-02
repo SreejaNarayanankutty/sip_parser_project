@@ -1,6 +1,3 @@
-import re
-
-
 def parse_sip_file(file_path):
     # print("inside parse file")
     with open(file_path, 'r') as sip_file:
@@ -17,12 +14,11 @@ def separate_details(file_path):
     # print(requesturi)
     for line in lines[1:]:
         line = line.strip()
-        if re.search(r'.*:\s.*', line):
-            print(re.split(r'.*:\s.*', line))
-            [header, value] = re.split(r':\s', line)
+        if line.__contains__(": "):
+            [header, value] = line.split(": ")
             # print(header+":"+value)
             sipheaders[header] = value
-        if not line or not re.search(r'.*:\s.*', line):
+        if not line or not line.__contains__(": "):
             sipbody.append(line)
     # print(sipheaders)
     # print(sipbody)
@@ -31,11 +27,10 @@ def separate_details(file_path):
 
 def print_message_details(file_path):
     requesturi, sipheaders, sipbody = separate_details(file_path)
-    methodname = re.split(r'\ssip:', requesturi)[0]
+    methodname = requesturi.split(" sip")[0]
     headerData = ""
     bodyData = ""
     for key in sipheaders.keys():
-        print("inside join headers")
         headerData = ''.join([headerData, f'\t{key}: {sipheaders[key]}\n'])
     for data in sipbody:
         bodyData = ''.join([bodyData, data])
@@ -48,10 +43,10 @@ def print_message_details(file_path):
           f'and body:\n\t{bodyData}\n\"""')
 
 
-def main():
+#def main():
     # print("hello inside main")
-    print_message_details("./data/sip_request.txt")
+    #print_message_details("./data/sip_request.txt")
 
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+    #main()
