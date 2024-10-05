@@ -1,0 +1,12 @@
+HEADER_SEARCH_PATTERN = r'.+:\s.+'
+METHOD_SPLIT_PATTERN = r'\s(sip|sips|tel):'
+MANDATORY_HEADERS = {'To', 'From', 'CSeq', 'Call-Id', 'Via', 'Max-Forwards'}
+TO_HEADER = 'to'
+FROM_HEADER = 'from'
+DOMAIN_NAME_PATTERN = r'sip:.+@.+\.\w+'
+SIP_PROTOCOL_PATTERN = 'SIP/2.0'
+REGISTER_METHOD_NAME = 'REGISTER'
+REGISTER_REQ_URI = rf'{REGISTER_METHOD_NAME}\ssip:.+\s{SIP_PROTOCOL_PATTERN}'
+OTHER_METHOD_NAME_PATTERN = '(INVITE|ACK|BYE|CANCEL)'
+TO_HEADER_VALUE_PATTERN = r'[a-zA-Z]*<(sip|sips|tel):.+>'
+FROM_HEADER_VALUE_PATTERN = r'.*<(sip|sips|tel):.+>;tag=.+'
