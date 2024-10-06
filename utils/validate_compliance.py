@@ -53,7 +53,7 @@ def validate_sip_message(file_path):
         else:
             validation_flag = False
             print(f'\"""\nThe verification of the request failed due to the following reason(s):\n'
-                  f'Error: The To header is not valid, as required by "RFC3261 Section 8.1.1.1"\n'
+                  f'Error: The To header is not valid, as required by "RFC3261 Section 8.1.1.2"\n'
                   f'\""".')
 
         if re.search(constants.FROM_HEADER_VALUE_PATTERN, from_header_val, re.IGNORECASE):
@@ -61,7 +61,7 @@ def validate_sip_message(file_path):
         else:
             validation_flag = False
             print(f'\"""\nThe verification of the request failed due to the following reason(s):\n'
-                  f'Error: The From header is not valid, as required by "RFC3261 Section 8.1.1.1"\n'
+                  f'Error: The From header is not valid, as required by "RFC3261 Section 8.1.1.3"\n'
                   f'\""".')
 
     else:
