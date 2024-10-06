@@ -48,7 +48,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-.DS_Store/
+.DS_Store
 Data/.DS_Store/
 
 # Pytest
